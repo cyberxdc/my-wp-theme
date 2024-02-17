@@ -1,11 +1,39 @@
-<?php get_header(); ?>
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex align-items-center">
-    <div class="container d-flex flex-column align-items-center" data-aos="zoom-in" data-aos-delay="100">
-      <h1>Kelly Adams</h1>
-      <h3><?php the_title(); ?></h3>
-      <h2>I'm a professional illustrator from San Francisco</h2>
-      <a href="about.html" class="btn-about">About Me</a>
+<?php
+/**
+ * The template for displaying all pages
+ *
+ * This is the template that displays all pages by default.
+ * Please note that this is the WordPress construct of pages
+ * and that other 'pages' on your WordPress site may use a
+ * different template.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ *
+ * @package Your_Theme
+ */
+
+get_header();
+?>
+
+<main id="main" class="site-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 mt-5 ">
+                <?php while (have_posts()) : the_post(); ?>
+                    <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+                        <header class="entry-header">
+                            <h1 class="entry-title"><?php the_title(); ?></h1>
+                        </header>
+                        <div class="entry-content">
+                            <?php the_content(); ?>
+                        </div>
+                    </article>
+                <?php endwhile; ?>
+            </div>
+        </div>
     </div>
-  </section><!-- End Hero -->
-<?php get_footer(); ?>
+</main>
+
+
+<?php
+get_footer();
